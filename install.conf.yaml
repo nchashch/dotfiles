@@ -1,0 +1,9 @@
+- link:
+    ~/.xmonad/xmonad.hs: src/xmonad/xmonad.hs
+    ~/.gitignore: src/gitignore
+    ~/.gitconfig: src/gitconfig
+    ~/.bashrc: src/bashrc
+    ~/.spacemacs: src/spacemacs
+    ~/.Xresources: src/Xresources
+    ~/.xinitrc: src/xinitrc
+- clean: ['~']
