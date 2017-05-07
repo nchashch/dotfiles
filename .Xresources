@@ -1,0 +1,4 @@
+URxvt.scrollBar: flase
+URxvt.font: xft:Inconsolata:size=12:bold:antialias=true
+URxvt.foreground: white
+URxvt.background: black
