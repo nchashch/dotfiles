@@ -266,19 +266,23 @@ explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
   ;; Begin Org mode configuration
   (setq org-directory "~/Org/")
-  (setq org-agenda-files (list (concat org-directory "/agenda")))
+  ;; Recursively add all files in (concat org-directory "/agenda") directory to agenda.
+  (setq org-agenda-files (list (directory-files-recursively (concat org-directory "/agenda"))))
+  ;; A task can't be marked as DONE until all it's sub-tasks are marked DONE .
   (setq org-enforce-todo-dependencies t)
+  ;; A task can't be marked as DONE until all the checkboxes inside it are marked.
   (setq org-enforce-todo-checkbox-dependencies t)
+  ;; Prompt for idle time resolution, if I forgot to clock out.
   (setq org-clock-persist 'history)
   (org-clock-persistence-insinuate)
+  ;; You must enclose subscripts and superscripts in {},
+  ;; A_{i} is A with subscript i, and A_i is just A underscore i.
   (setq org-use-sub-superscripts "{}")
   (setq org-default-notes-file (concat org-directory "/notes.org"))
+  ;; Bind capture command to C-cc
   (define-key global-map "\C-cc" 'org-capture)
   ;; End Org mode configuration
-  ;; Begin EasyPG config
-  (require 'epa-file)
-  (epa-file-enable)
-  ;; End EasyPG config
+  ;; Increase font size with C-+ and decrease with C--
   (define-key global-map (kbd "C-+") 'text-scale-increase)
   (define-key global-map (kbd "C--") 'text-scale-decrease)
   )
@@ -290,7 +294,9 @@ you should place your code here."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(org-agenda-files (quote ("/home/nchashch/Org/agenda/todo.org")))
+ '(org-agenda-files
+   (quote
+    ("/home/nchashch/Org/agenda/todo.org" "~/Org/agenda/projects/personal_website.org" "~/Org/agenda/projects/backup_system.org")))
  '(org-capture-templates
    (quote
     (("t" "Todo entry" entry
