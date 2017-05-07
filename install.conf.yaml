@@ -3,7 +3,7 @@
     ~/.gitignore: src/gitignore
     ~/.gitconfig: src/gitconfig
     ~/.bashrc: src/bashrc
-    ~/.spacemacs: src/spacemacs
-    ~/.Xresources: src/Xresources
-    ~/.xinitrc: src/xinitrc
+    ~/.spacemacs: src/emacs/spacemacs
+    ~/.Xresources: src/xorg/Xresources
+    ~/.xinitrc: src/xorg/xinitrc
 - clean: ['~']
