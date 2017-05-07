@@ -267,7 +267,7 @@ you should place your code here."
   ;; Begin Org mode configuration
   (setq org-directory "~/Org/")
   ;; Recursively add all files in (concat org-directory "/agenda") directory to agenda.
-  (setq org-agenda-files (list (directory-files-recursively (concat org-directory "/agenda"))))
+  (setq org-agenda-files (directory-files-recursively (concat org-directory "/agenda") ""))
   ;; A task can't be marked as DONE until all it's sub-tasks are marked DONE .
   (setq org-enforce-todo-dependencies t)
   ;; A task can't be marked as DONE until all the checkboxes inside it are marked.
