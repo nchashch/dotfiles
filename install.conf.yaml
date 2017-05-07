@@ -1,8 +1,9 @@
 - link:
     ~/.xmonad/xmonad.hs: src/xmonad/xmonad.hs
-    ~/.gitignore: src/gitignore
-    ~/.gitconfig: src/gitconfig
-    ~/.bashrc: src/bashrc
+    ~/.gitignore: src/git/gitignore
+    ~/.gitconfig: src/git/gitconfig
+    ~/.bashrc: src/bash/bashrc
+    ~/.bash_profile: src/bash/bash_profile
     ~/.spacemacs: src/emacs/spacemacs
     ~/.Xresources: src/xorg/Xresources
     ~/.xinitrc: src/xorg/xinitrc
