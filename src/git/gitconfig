@@ -2,5 +2,5 @@
   email = nikita.chashchinskii@gmail.com
 	name = Nikita Chashchinskii
 [core]
-	excludesfile = /home/user/.gitignore
+	excludesfile = /home/nchashch/.gitignore
 	editor = emacs -nw
