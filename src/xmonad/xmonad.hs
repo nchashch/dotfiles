@@ -15,8 +15,12 @@ xmonadConfig =  defaultConfig
             handleEventHook defaultConfig <+> fullscreenEventHook
     }
 
+myBar :: String
 myBar = "xmobar -o"
+
 myPP = xmobarPP { ppCurrent = xmobarColor "#429942" "" . wrap "[" "]" }
+
+toggleStrutsKey :: XConfig l -> (KeyMask, KeySym)
 toggleStrutsKey XConfig {XMonad.modMask = modMask} = (modMask, xK_b)
 
 delkeys :: XConfig l -> [(KeyMask, KeySym)]
