@@ -1,5 +1,6 @@
 - link:
     ~/.xmonad/xmonad.hs: src/xmonad/xmonad.hs
+    ~/.xmonad/xmobar.hs: src/xmonad/xmobar.hs
     ~/.gitignore: src/git/gitignore
     ~/.gitconfig: src/git/gitconfig
     ~/.bashrc: src/bash/bashrc

@@ -27,6 +27,7 @@ values."
      haskell
      yaml
      markdown
+     docker
      ;; ----------------------------------------------------------------
      ;; Example of useful layers you may want to use right away.
      ;; Uncomment some layer names and press <SPC f e R> (Vim style) or
@@ -57,7 +58,7 @@ values."
    ;; wrapped in a layer. If you need some configuration for these
    ;; packages, then consider creating a layer. You can also put the
    ;; configuration in `dotspacemacs/user-config'.
-   dotspacemacs-additional-packages '()
+   dotspacemacs-additional-packages '(dash dash-functional f s company flycheck)
    ;; A list of packages and/or extensions that will not be install and loaded.
    dotspacemacs-excluded-packages '()
    ;; If non-nil spacemacs will delete any orphan packages, i.e. packages that
@@ -277,6 +278,8 @@ you should place your code here."
   ;; Make headers in all agenda files legitimate refile targets.
   (setq org-refile-targets
         '((org-agenda-files :maxlevel . 3)))
+  (setq org-todo-keywords
+        '((sequence "TODO(t)" "|" "DONE(d)" "CANCELED(c)")))
   ;; A task can't be marked as DONE until all it's sub-tasks are marked DONE .
   (setq org-enforce-todo-dependencies t)
   ;; A task can't be marked as DONE until all the checkboxes inside it are marked.
@@ -350,7 +353,7 @@ you should place your code here."
  '(haskell-indentation-where-pre-offset 4)
  '(org-agenda-files
    (quote
-    ("/home/nchashch/Org/agenda/todo.org" "~/Org/agenda/projects/personal_website.org" "~/Org/agenda/projects/backup_system.org")))
+    ("/home/nchashch/Org/agenda/ideas.org" "/home/nchashch/Org/agenda/lectures.org" "/home/nchashch/Org/agenda/projects.org" "/home/nchashch/Org/agenda/reading.org" "/home/nchashch/Org/agenda/schedule.org")))
  '(org-capture-templates
    (quote
     (("t" "Todo entry" entry
@@ -358,7 +361,7 @@ you should place your code here."
       "* TODO"))))
  '(package-selected-packages
    (quote
-    (git-gutter-fringe+ git-gutter-fringe fringe-helper git-gutter+ git-gutter diff-hl mu4e-maildirs-extension mu4e-alert magit-gh-pulls github-search github-clone github-browse-file gist gh marshal logito pcache ht zeal-at-point helm-dash rainbow-mode rainbow-identifiers color-identifiers-mode eyebrowse csv-mode helm-company helm-c-yasnippet fuzzy company-web web-completion-data company-tern dash-functional tern company-statistics company-cabal company-anaconda auto-yasnippet ac-ispell auto-complete unfill mwim challenger-deep-theme ac-haskell-process flycheck-rust seq flycheck-pos-tip pos-tip flycheck-ledger flycheck-haskell pony-mode langtool flyspell-correct-helm flyspell-correct auto-dictionary log4e gntp parent-mode pkg-info epl haml-mode gitignore-mode flx goto-chg diminish bind-map bind-key packed pythonic winum hide-comnt sql-indent hledger-mode web-beautify livid-mode skewer-mode simple-httpd json-mode json-snatcher json-reformat js2-refactor multiple-cursors js2-mode js-doc coffee-mode intero flycheck hlint-refactor hindent helm-hoogle haskell-snippets yasnippet company-ghci company-ghc ghc company haskell-mode cmm-mode powerline spinner org alert hydra projectile magit magit-popup git-commit with-editor iedit rust-mode highlight anzu smartparens evil undo-tree request helm helm-core popup async avy f s dash yaml-mode mmm-mode markdown-toc markdown-mode gh-md yapfify ws-butler window-numbering which-key web-mode volatile-highlights vi-tilde-fringe uuidgen use-package toml-mode toc-org tagedit spacemacs-theme spaceline solarized-theme smeargle slim-mode scss-mode sass-mode restart-emacs ranger rainbow-delimiters racer quelpa pyvenv pytest pyenv-mode py-isort pug-mode popwin pip-requirements persp-mode pcre2el paradox orgit org-projectile org-present org-pomodoro org-plus-contrib org-download org-bullets open-junk-file neotree move-text monokai-theme magit-gitflow macrostep lorem-ipsum live-py-mode linum-relative link-hint less-css-mode ledger-mode info+ indent-guide ido-vertical-mode hy-mode hungry-delete htmlize hl-todo highlight-parentheses highlight-numbers highlight-indentation help-fns+ helm-themes helm-swoop helm-pydoc helm-projectile helm-mode-manager helm-make helm-gitignore helm-flx helm-descbinds helm-css-scss helm-ag google-translate golden-ratio gnuplot gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link flx-ido fill-column-indicator fancy-battery expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eval-sexp-fu erc-yt erc-view-log erc-social-graph erc-image erc-hl-nicks emmet-mode elisp-slime-nav dumb-jump define-word cython-mode column-enforce-mode clean-aindent-mode cargo auto-highlight-symbol auto-compile anaconda-mode aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line)))
+    (dockerfile-mode docker tablist docker-tramp unicode-fonts git-gutter-fringe+ git-gutter-fringe fringe-helper git-gutter+ git-gutter diff-hl mu4e-maildirs-extension mu4e-alert magit-gh-pulls github-search github-clone github-browse-file gist gh marshal logito pcache ht zeal-at-point helm-dash rainbow-mode rainbow-identifiers color-identifiers-mode eyebrowse csv-mode helm-company helm-c-yasnippet fuzzy company-web web-completion-data company-tern dash-functional tern company-statistics company-cabal company-anaconda auto-yasnippet ac-ispell auto-complete unfill mwim challenger-deep-theme ac-haskell-process flycheck-rust seq flycheck-pos-tip pos-tip flycheck-ledger flycheck-haskell pony-mode langtool flyspell-correct-helm flyspell-correct auto-dictionary log4e gntp parent-mode pkg-info epl haml-mode gitignore-mode flx goto-chg diminish bind-map bind-key packed pythonic winum hide-comnt sql-indent hledger-mode web-beautify livid-mode skewer-mode simple-httpd json-mode json-snatcher json-reformat js2-refactor multiple-cursors js2-mode js-doc coffee-mode intero flycheck hlint-refactor hindent helm-hoogle haskell-snippets yasnippet company-ghci company-ghc ghc company haskell-mode cmm-mode powerline spinner org alert hydra projectile magit magit-popup git-commit with-editor iedit rust-mode highlight anzu smartparens evil undo-tree request helm helm-core popup async avy f s dash yaml-mode mmm-mode markdown-toc markdown-mode gh-md yapfify ws-butler window-numbering which-key web-mode volatile-highlights vi-tilde-fringe uuidgen use-package toml-mode toc-org tagedit spacemacs-theme spaceline solarized-theme smeargle slim-mode scss-mode sass-mode restart-emacs ranger rainbow-delimiters racer quelpa pyvenv pytest pyenv-mode py-isort pug-mode popwin pip-requirements persp-mode pcre2el paradox orgit org-projectile org-present org-pomodoro org-plus-contrib org-download org-bullets open-junk-file neotree move-text monokai-theme magit-gitflow macrostep lorem-ipsum live-py-mode linum-relative link-hint less-css-mode ledger-mode info+ indent-guide ido-vertical-mode hy-mode hungry-delete htmlize hl-todo highlight-parentheses highlight-numbers highlight-indentation help-fns+ helm-themes helm-swoop helm-pydoc helm-projectile helm-mode-manager helm-make helm-gitignore helm-flx helm-descbinds helm-css-scss helm-ag google-translate golden-ratio gnuplot gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link flx-ido fill-column-indicator fancy-battery expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eval-sexp-fu erc-yt erc-view-log erc-social-graph erc-image erc-hl-nicks emmet-mode elisp-slime-nav dumb-jump define-word cython-mode column-enforce-mode clean-aindent-mode cargo auto-highlight-symbol auto-compile anaconda-mode aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line)))
  '(paradox-github-token t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.

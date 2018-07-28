@@ -1,7 +1,7 @@
 alias ls='ls --color=auto'
-eval "$(stack --bash-completion-script stack)"
+# eval "$(stack --bash-completion-script stack)"
 source /usr/share/git/completion/git-completion.bash
-export PROJECT_HOME=~/dev/python/
-source virtualenvwrapper.sh
-PATH_ADDITIONAL=:/home/nchashch/.gem/ruby/2.4.0/bin
-export PATH=$PATH$PATH_ADDITIONAL
+# export PROJECT_HOME=~/dev/python/
+# source virtualenvwrapper.sh
+ PATH_ADDITIONAL=:/home/nchashch/.cargo/bin
+ export PATH=$PATH$PATH_ADDITIONAL

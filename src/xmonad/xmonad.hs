@@ -4,7 +4,8 @@ import XMonad.Util.CustomKeys
 import XMonad.Hooks.EwmhDesktops
 
 main = do
-    xmonad =<< statusBar myBar myPP toggleStrutsKey xmonadConfig
+      xmonad =<< statusBar myBar myPP toggleStrutsKey xmonadConfig
+      xmonad xmonadConfig
 
 xmonadConfig =  defaultConfig
     { borderWidth = 0
@@ -16,12 +17,13 @@ xmonadConfig =  defaultConfig
     }
 
 myBar :: String
-myBar = "xmobar -o"
+myBar = "xmobar ~/.xmonad/xmobar.hs"
 
 myPP = xmobarPP { ppCurrent = xmobarColor "#429942" "" . wrap "[" "]" }
 
 toggleStrutsKey :: XConfig l -> (KeyMask, KeySym)
 toggleStrutsKey XConfig {XMonad.modMask = modMask} = (modMask, xK_b)
+
 
 delkeys :: XConfig l -> [(KeyMask, KeySym)]
 delkeys XConfig {modMask = modm} =
@@ -33,7 +35,7 @@ inskeys conf@(XConfig {modMask = modm}) =
     , ((modm, xK_f), spawn secondaryDisplayOff)
     ]
 
-primaryDisplay = "LVDS-1"
-secondaryDisplay = "VGA-1"
+primaryDisplay = "LVDS1"
+secondaryDisplay = "VGA1"
 secondaryDisplayOn = "xrandr --output " ++ secondaryDisplay ++ " --auto --right-of " ++ primaryDisplay
 secondaryDisplayOff = "xrandr --output " ++ secondaryDisplay ++ " --off"
