@@ -1,12 +1,12 @@
-Config { 
-    font = "xft:Droid Sans Mono:size=9:bold:antialias=true"
+Config {
+    font = "xft:Droid Sans Mono:size=9:bold:antialias=true",
     bgColor = "#000000",
     fgColor = "#ffffff",
     position = Static { xpos = 0, ypos = 0, width = 1366, height = 16 },
     lowerOnStart = True,
     commands = [
          Run Weather "UUDD" ["-t","<tempC>°C","-L","18","-H","25","--normal","green","--high","red","--low","lightblue"] 36000
-        ,Run Memory ["-t","<used>/<total>M (<cache>M)","-H","8192","-L","4096","-h","#FFB6B0","-l","#CEFFAC","-n","#FFFFCC"] 10        
+        ,Run Memory ["-t","<used>/<total>M (<cache>M)","-H","8192","-L","4096","-h","#FFB6B0","-l","#CEFFAC","-n","#FFFFCC"] 10
         ,Run Swap [] 10
         ,Run Network "wlp4s0" [
              "-t"    ,"rx:<rx>, tx:<tx>"
@@ -35,16 +35,21 @@ Config {
             , "--normal"   , "darkorange"
             , "--high"     , "darkred"
         ] 50
-        ,Run Battery [
-              "--Low"      , "30"        -- units: %
-            , "--High"     , "60"        -- units: %
+        ,Run BatteryP ["BAT0"]
+         [
+              "-t", "<acstatus> / <left>%"
+            , "--Low"      , "30"        -- units: %
+            , "--High"     , "70"        -- units: %
             , "--low"      , "red"
             , "--normal"   , "yellow"
             , "--high"     , "green"
+            , "--", "-O", "Charging", "-o", "Battery: <timeleft>"
+            , "-i", "<fc=green>Fully Charged</fc>"
         ] 10
+
         ,Run StdinReader
     ],
     sepChar = "%",
     alignSep = "}{",
-    template = "%StdinReader% }{ %coretemp% | %multicpu% | %memory% | %swap% | %UUDD% | %battery%  | <fc=#FFFFCC>%date%</fc>   "
+    template = "%StdinReader% }{ %coretemp% | %multicpu% | %memory% | %swap% | %UUDD% | %battery%  | <fc=#FFFFCC>%date%</fc>"
 }

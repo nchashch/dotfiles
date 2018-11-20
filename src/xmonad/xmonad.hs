@@ -1,3 +1,5 @@
+{-# OPTIONS_GHC -dynamic #-} 
+
 import XMonad
 import XMonad.Hooks.DynamicLog
 import XMonad.Util.CustomKeys
