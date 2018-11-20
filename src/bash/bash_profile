@@ -1,3 +1,7 @@
 if [ -z "$DISPLAY" ] && [ -n "$XDG_VTNR" ] && [ "$XDG_VTNR" -eq 1 ]; then
+  alias emacs='emacsclient -nc'
+  PATH_ADDITIONAL=:/home/nchashch/bin
+  export PATH=$PATH$PATH_ADDITIONAL
+  eval `keychain --eval --agents ssh id_rsa`
   startx
 fi

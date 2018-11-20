@@ -1,7 +1,7 @@
 alias ls='ls --color=auto'
+alias emacs='emacsclient -nc'
+export EDITOR=emacs
 # eval "$(stack --bash-completion-script stack)"
 source /usr/share/git/completion/git-completion.bash
-# export PROJECT_HOME=~/dev/python/
-# source virtualenvwrapper.sh
- PATH_ADDITIONAL=:/home/nchashch/.cargo/bin
- export PATH=$PATH$PATH_ADDITIONAL
+PATH_ADDITIONAL=:/home/nchashch/.cargo/bin:/home/nchashch/.local/bin
+export PATH=$PATH$PATH_ADDITIONAL
