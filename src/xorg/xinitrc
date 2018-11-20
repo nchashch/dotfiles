@@ -1,5 +1,5 @@
 xrdb ~/.Xresources
 setxkbmap -layout "us,ru"
 setxkbmap -option "grp:caps_toggle"
-feh --bg-fill Napoleon-Gérome.jpg
+feh --bg-fill library.jpg
 exec xmonad
