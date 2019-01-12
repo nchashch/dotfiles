@@ -46,10 +46,13 @@ Config {
             , "--", "-O", "Charging", "-o", "Battery: <timeleft>"
             , "-i", "<fc=green>Fully Charged</fc>"
         ] 10
-
+        ,Run Date "<fc=#ABABAB>%F %a %T</fc>" "date" 10
+        ,Run Kbd            [ ("ru", "<fc=#00008B>RU</fc>")
+                            , ("us", "<fc=#8B0000>EN</fc>")
+                            ]
         ,Run StdinReader
     ],
     sepChar = "%",
     alignSep = "}{",
-    template = "%StdinReader% }{ %coretemp% | %multicpu% | %memory% | %swap% | %UUDD% | %battery%  | <fc=#FFFFCC>%date%</fc>"
+    template = "%StdinReader% }{ %coretemp% | %multicpu% | %memory% | %swap% | %UUDD% | %battery%  | %date% | %kbd%"
 }
